@@ -22,7 +22,7 @@ export default function FormComponent() {
     })
 
     const {
-        trigger, reset, formState:{isSubmitting},control,setFocus,watch,handleSubmit,setValue
+        trigger, register,reset, formState:{isSubmitting, errors},control,setFocus,watch,handleSubmit,setValue
      } = form;
 
     const onSubmit = (values: formValidSchemaType) => {
@@ -32,6 +32,18 @@ export default function FormComponent() {
   return (
       <Form {...form}>
           <form noValidate onSubmit={handleSubmit(onSubmit)}>
+              {/* if you are not using shadcn ui , you can access the errors just like this , there you have to just register your fields like */}
+              {/* {
+                  <form>
+                      <input {...register('username')} />
+                      {errors.username && <div className='text-destructive'>{errors.username.message}</div>}
+                  </form>
+          } */}
+              {/* {
+                  errors.confirmpassword && <div className='text-destructive'>
+                      {errors.confirmpassword.message}
+                </div>
+              } */}
               <FormField
                   control={control}
                   name='username'
